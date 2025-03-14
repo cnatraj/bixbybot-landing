@@ -1,0 +1,26 @@
+// Gradient variables
+$primary-gradient: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+$accent-gradient: linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%);
+
+// Spacing
+$section-spacing: 2rem;
+$component-spacing: 2.5rem;
+
+// Breakpoints (matching Vuetify's default breakpoints)
+$mobile-breakpoint: 600px;
+$tablet-breakpoint: 960px;
+$desktop-breakpoint: 1264px;
+
+// Typography
+$heading-font-family: 'Urbanist', sans-serif;
+$body-font-family: 'Urbanist', sans-serif;
+
+// Colors
+$text-primary: rgb(17, 19, 24);
+$text-secondary: #475569;
+$background-light: #F9FAFB;
+$purple-light: #F5F3FF;
+
+// Custom
+$max-content-width: 1200px;
+$container-padding: 1.5rem;
