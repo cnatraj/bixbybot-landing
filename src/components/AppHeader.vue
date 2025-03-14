@@ -2,7 +2,9 @@
   <v-app-bar app flat color="white" elevation="0">
     <v-container class="d-flex align-center justify-space-between py-2">
       <router-link to="/" class="d-flex align-center text-decoration-none">
-        <v-icon color="primary" size="32" class="mr-2">mdi-circle-multiple</v-icon>
+        <v-icon color="primary" size="32" class="mr-2"
+          >mdi-circle-multiple</v-icon
+        >
         <span class="text-h6 font-weight-bold text-primary">BIXBYBOT</span>
       </router-link>
 
@@ -18,21 +20,16 @@
   </v-app-bar>
 </template>
 
-<script setup>
-</script>
+<script setup></script>
 
 <style scoped lang="scss">
 .v-app-bar {
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  
+
   &.scrolled {
     background-color: rgba(255, 255, 255, 0.9) !important;
     backdrop-filter: blur(10px);
   }
-}
-
-.text-primary {
-  color: $text-primary !important;
 }
 
 .text-secondary {

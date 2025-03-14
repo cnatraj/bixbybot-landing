@@ -10,7 +10,8 @@
               variant="outlined"
               size="large"
             >
-              <v-icon start size="18">mdi-currency-usd</v-icon>The Hidden Costs of Bad Leads
+              <v-icon start size="18">mdi-currency-usd</v-icon>The Hidden Costs
+              of Bad Leads
             </v-chip>
           </div>
           <h2 class="text-h2 font-weight-bold">
@@ -34,47 +35,52 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import FeatureCard from './FeatureCard.vue'
+import { ref } from "vue";
+import FeatureCard from "./FeatureCard.vue";
 
 const features = ref([
   {
-    icon: 'mdi-account-alert',
-    iconBg: '#FEF3C7',
-    title: 'Missed Booking Opportunities',
-    description: 'Wasting valuable time and resources on unqualified leads that go nowhere.'
+    icon: "mdi-account-alert",
+    iconBg: "#FEF3C7",
+    title: "Missed Opportunities",
+    description:
+      "Wasting valuable time and resources on unqualified leads that go nowhere.",
   },
   {
-    icon: 'mdi-currency-usd-off',
-    iconBg: '#DCFCE7',
-    title: 'High Cost Per Booking',
-    description: 'Increasing lead costs with inconsistent ROI affecting your bottom line.'
+    icon: "mdi-currency-usd-off",
+    iconBg: "#DCFCE7",
+    title: "High Cost Per Booking",
+    description:
+      "Increasing lead costs with inconsistent ROI affecting your bottom line.",
   },
   {
-    icon: 'mdi-clock-alert',
-    iconBg: '#E0E7FF',
-    title: 'After-Hours Booking Loss',
-    description: 'Slow responses drive customers straight to your competitors.'
+    icon: "mdi-clock-alert",
+    iconBg: "#E0E7FF",
+    title: "After-Hours Booking",
+    description: "Slow responses drive customers straight to your competitors.",
   },
   {
-    icon: 'mdi-calendar-alert',
-    iconBg: '#FEE2E2',
-    title: 'Manual Scheduling Headaches',
-    description: 'Manual booking processes leading to inefficiencies and lost time.'
+    icon: "mdi-calendar-alert",
+    iconBg: "#FEE2E2",
+    title: "Manual Scheduling",
+    description:
+      "Manual booking processes leading to inefficiencies and lost time.",
   },
   {
-    icon: 'mdi-account-group-outline',
-    iconBg: '#DBEAFE',
-    title: 'Limited Direct Bookings',
-    description: 'Consent-driven leads will be the standard in 2025 - are you ready?'
+    icon: "mdi-account-group-outline",
+    iconBg: "#DBEAFE",
+    title: "Limited Direct Bookings",
+    description:
+      "Consent-driven leads will be the standard in 2025 - are you ready?",
   },
   {
-    icon: 'mdi-cancel',
-    iconBg: '#FCE7F3',
-    title: 'Delayed Booking Confirmations',
-    description: 'Every lead gets an immediate response, improving engagement and trust.'
-  }
-])
+    icon: "mdi-cancel",
+    iconBg: "#FCE7F3",
+    title: "Delayed Confirmations",
+    description:
+      "Every lead gets an immediate response, improving engagement and trust.",
+  },
+]);
 </script>
 
 <style scoped lang="scss">
@@ -92,7 +98,7 @@ const features = ref([
   font-size: 0.875rem;
   font-weight: 500;
   height: 32px;
-  
+
   :deep(.v-chip__content) {
     line-height: 1;
   }
