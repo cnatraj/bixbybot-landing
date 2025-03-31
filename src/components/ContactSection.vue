@@ -11,15 +11,20 @@
               size="large"
             >
               <v-icon start size="18">mdi-message</v-icon>
-              Join the waiting list
+              Get started
             </v-chip>
           </div>
           <h2 class="text-h2 font-weight-bold mb-4">
-            Join the waiting list for free!
+            Join the launch for free!
           </h2>
           <p class="text-body-1 text-medium-emphasis mb-12">
-            BixbyBot launches to the public on April 14th. As part of our launch, we are offering BixbyBot for free for the first 50 users. 
+            BixbyBot launches to the public on April 14th. As part of our
+            launch, we are offering BixbyBot for free for the first 50 users.
           </p>
+          <div class="d-flex font-weight-bold text-medium-emphasis">
+            <p class="mr-3">🚀 Free for first 50 signups</p>
+            <p class="">💳 No credit card required</p>
+          </div>
         </v-col>
 
         <v-col cols="12" md="7">
@@ -56,7 +61,7 @@
                 :loading="loading"
                 :disabled="loading"
               >
-                {{ loading ? 'Submitting...' : 'Reserve my spot' }}
+                {{ loading ? "Submitting..." : "Reserve my spot" }}
               </v-btn>
 
               <v-alert
@@ -76,77 +81,78 @@
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
-import { db } from '../firebase/config'
+import { ref, reactive } from "vue";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { db } from "../firebase/config";
 
 const formData = reactive({
-  fullName: '',
-  email: ''
-})
+  fullName: "",
+  email: "",
+});
 
 const errors = reactive({
-  fullName: '',
-  email: ''
-})
+  fullName: "",
+  email: "",
+});
 
-const loading = ref(false)
+const loading = ref(false);
 const submitStatus = reactive({
-  message: '',
-  type: 'success'
-})
+  message: "",
+  type: "success",
+});
 
 const validateForm = () => {
-  let isValid = true
-  errors.fullName = ''
-  errors.email = ''
+  let isValid = true;
+  errors.fullName = "";
+  errors.email = "";
 
   if (!formData.fullName.trim()) {
-    errors.fullName = 'Full name is required'
-    isValid = false
+    errors.fullName = "Full name is required";
+    isValid = false;
   }
 
   if (!formData.email.trim()) {
-    errors.email = 'Email is required'
-    isValid = false
+    errors.email = "Email is required";
+    isValid = false;
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-    errors.email = 'Please enter a valid email address'
-    isValid = false
+    errors.email = "Please enter a valid email address";
+    isValid = false;
   }
 
-  return isValid
-}
+  return isValid;
+};
 
 const handleSubmit = async () => {
-  if (!validateForm()) return
+  if (!validateForm()) return;
 
-  loading.value = true
-  submitStatus.message = ''
+  loading.value = true;
+  submitStatus.message = "";
 
   try {
     if (!db) {
-      throw new Error('Firebase not initialized')
+      throw new Error("Firebase not initialized");
     }
 
-    await addDoc(collection(db, 'waitlist'), {
+    await addDoc(collection(db, "waitlist"), {
       ...formData,
-      createdAt: serverTimestamp()
-    })
+      createdAt: serverTimestamp(),
+    });
 
-    submitStatus.type = 'success'
-    submitStatus.message = 'Thank you for joining our waitlist! We\'ll be in touch soon.'
-    
+    submitStatus.type = "success";
+    submitStatus.message =
+      "Thank you for joining our waitlist! We'll be in touch soon.";
+
     // Reset form
-    formData.fullName = ''
-    formData.email = ''
+    formData.fullName = "";
+    formData.email = "";
   } catch (error) {
-    console.error('Error submitting form:', error)
-    submitStatus.type = 'error'
-    submitStatus.message = 'Something went wrong. Please try again.'
+    console.error("Error submitting form:", error);
+    submitStatus.type = "error";
+    submitStatus.message = "Something went wrong. Please try again.";
   } finally {
-    loading.value = false
+    loading.value = false;
   }
-}
+};
 </script>
 
 <style scoped lang="scss">
@@ -161,7 +167,7 @@ const handleSubmit = async () => {
 }
 
 .contact-form {
-  background: #F9FAFB;
+  background: #f9fafb;
   padding: 2rem;
   border-radius: 24px;
 }
@@ -177,7 +183,7 @@ const handleSubmit = async () => {
   .v-field {
     background: white !important;
     border-radius: 12px !important;
-    
+
     &__outline {
       --v-field-border-opacity: 0.1 !important;
     }
@@ -202,7 +208,7 @@ const handleSubmit = async () => {
   font-size: 0.875rem;
   font-weight: 500;
   height: 32px;
-  
+
   :deep(.v-chip__content) {
     line-height: 1;
   }

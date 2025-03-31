@@ -13,7 +13,7 @@
         class="rounded-pill font-weight-medium header-cta"
         size="x-large"
       >
-        Reserve my spot
+        Try it for Free
         <v-icon end>mdi-arrow-right</v-icon>
       </v-btn>
     </v-container>
@@ -30,10 +30,6 @@
     background-color: rgba(255, 255, 255, 0.9) !important;
     backdrop-filter: blur(10px);
   }
-}
-
-.text-secondary {
-  color: $text-secondary !important;
 }
 
 .v-btn {
