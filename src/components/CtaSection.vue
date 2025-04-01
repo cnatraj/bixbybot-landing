@@ -18,7 +18,9 @@
             Grow your home services business with BixbyBot
           </h2>
           <p class="text-h5 text-secondary mb-8">
-            Unlock the full potential of AI with our innovative solutions. Experience the future of customer engagement and operational efficiency today
+            Unlock the full potential of AI with our innovative solutions.
+            Experience the future of customer engagement and operational
+            efficiency today
           </p>
           <div class="d-flex gap-4">
             <v-btn
@@ -26,6 +28,7 @@
               size="x-large"
               rounded="pill"
               class="get-started-btn"
+              to="/waitlist"
             >
               Reserve My Spot
             </v-btn>
@@ -49,12 +52,13 @@
 </template>
 
 <script setup>
-  const businessOwner = new URL('../assets/images/happy.webp', import.meta.url).href
+const businessOwner = new URL("../assets/images/happy.webp", import.meta.url)
+  .href;
 </script>
 <style scoped lang="scss">
 .cta-section {
   padding: calc($section-spacing * 2) 0;
-  background: #FDF4FF;
+  background: #fdf4ff;
   position: relative;
   overflow: hidden;
 }
@@ -81,7 +85,7 @@
   padding: 0 2rem !important;
   height: 56px !important;
   border: 2px solid rgba(124, 58, 237, 0.1) !important;
-  color: #7C3AED !important;
+  color: #7c3aed !important;
 }
 
 .cta-image {
@@ -121,7 +125,7 @@
   font-size: 0.875rem;
   font-weight: 500;
   height: 32px;
-  
+
   :deep(.v-chip__content) {
     line-height: 1;
   }

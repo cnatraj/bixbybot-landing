@@ -5,8 +5,6 @@ export function setupAnalytics(app, router) {
     property: {
       id: "G-BF9ME6EYHM",
     },
-    useDebugger: true,
-    isEnabled: true,
   });
 
   // Track router navigation

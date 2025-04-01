@@ -12,6 +12,7 @@
         color="primary"
         class="rounded-pill font-weight-medium header-cta"
         size="x-large"
+        to="/waitlist"
       >
         Try it for Free
         <v-icon end>mdi-arrow-right</v-icon>

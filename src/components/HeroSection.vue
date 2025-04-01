@@ -24,6 +24,7 @@
             size="x-large"
             rounded="pill"
             class="hero-cta mb-4"
+            to="/waitlist"
           >
             Try it For Free
             <v-icon end>mdi-arrow-right</v-icon>

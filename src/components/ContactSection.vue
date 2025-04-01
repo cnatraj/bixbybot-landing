@@ -2,35 +2,22 @@
   <section class="contact-section">
     <v-container>
       <v-row align="center">
-        <v-col cols="12" md="5">
-          <div class="d-flex mb-6">
-            <v-chip
-              class="section-chip"
-              color="accent"
-              variant="outlined"
-              size="large"
-            >
-              <v-icon start size="18">mdi-message</v-icon>
-              Get started
-            </v-chip>
-          </div>
+        <v-col class="text-center">
           <h2 class="text-h2 font-weight-bold mb-4">
             Join the launch for free!
           </h2>
-          <p class="text-body-1 text-medium-emphasis mb-12">
+
+          <p class="text-body-1 text-medium-emphasis mb-4">
             BixbyBot launches to the public on April 14th. As part of our
             launch, we are offering BixbyBot for free for the first 50 users.
           </p>
-          <div class="d-flex font-weight-bold text-medium-emphasis">
-            <p class="mr-3">🚀 Free for first 50 signups</p>
-            <p class="">💳 No credit card required</p>
-          </div>
         </v-col>
-
-        <v-col cols="12" md="7">
-          <div class="contact-form">
-            <v-form @submit.prevent="handleSubmit">
-              <div class="mb-6">
+      </v-row>
+      <div class="contact-form">
+        <v-form @submit.prevent="handleSubmit">
+          <v-row>
+            <v-col cols="12" md="6">
+              <div>
                 <label class="form-label">Full Name *</label>
                 <v-text-field
                   v-model="formData.fullName"
@@ -41,7 +28,7 @@
                 ></v-text-field>
               </div>
 
-              <div class="mb-6">
+              <div>
                 <label class="form-label">Email Address *</label>
                 <v-text-field
                   v-model="formData.email"
@@ -52,6 +39,57 @@
                 ></v-text-field>
               </div>
 
+              <div>
+                <label class="form-label">Phone Number *</label>
+                <v-text-field
+                  v-model="formData.phone"
+                  variant="outlined"
+                  placeholder="(555) 555-5555"
+                  :error-messages="errors.phone"
+                  class="form-input"
+                  @input="formatPhoneNumber"
+                  maxlength="14"
+                ></v-text-field>
+              </div>
+            </v-col>
+            <v-col cols="12" md="6">
+              <div>
+                <label class="form-label">Business Name *</label>
+                <v-text-field
+                  v-model="formData.businessName"
+                  variant="outlined"
+                  placeholder="Your business name"
+                  :error-messages="errors.businessName"
+                  class="form-input"
+                ></v-text-field>
+              </div>
+
+              <div>
+                <label class="form-label">Type of Industry *</label>
+                <v-select
+                  v-model="formData.industry"
+                  :items="industries"
+                  variant="outlined"
+                  placeholder="Select your industry"
+                  :error-messages="errors.industry"
+                  class="form-input"
+                ></v-select>
+              </div>
+
+              <div>
+                <label class="form-label">Business Website</label>
+                <v-text-field
+                  v-model="formData.website"
+                  variant="outlined"
+                  placeholder="www.example.com"
+                  :error-messages="errors.website"
+                  class="form-input"
+                ></v-text-field>
+              </div>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col>
               <v-btn
                 type="submit"
                 color="black"
@@ -72,10 +110,10 @@
               >
                 {{ submitStatus.message }}
               </v-alert>
-            </v-form>
-          </div>
-        </v-col>
-      </v-row>
+            </v-col>
+          </v-row>
+        </v-form>
+      </div>
     </v-container>
   </section>
 </template>
@@ -85,14 +123,32 @@ import { ref, reactive } from "vue";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase/config";
 
+const industries = [
+  "HVAC",
+  "Plumbing",
+  "Pest Control",
+  "Roofing",
+  "Solar Installation",
+  "General Contracting",
+  "Other",
+];
+
 const formData = reactive({
   fullName: "",
   email: "",
+  phone: "",
+  businessName: "",
+  industry: "",
+  website: "",
 });
 
 const errors = reactive({
   fullName: "",
   email: "",
+  phone: "",
+  businessName: "",
+  industry: "",
+  website: "",
 });
 
 const loading = ref(false);
@@ -101,10 +157,32 @@ const submitStatus = reactive({
   type: "success",
 });
 
+const formatPhoneNumber = () => {
+  // Remove all non-numeric characters
+  let phoneNumber = formData.phone.replace(/\D/g, "");
+
+  // Format the number as (XXX) XXX-XXXX
+  if (phoneNumber.length >= 3) {
+    phoneNumber = `(${phoneNumber.slice(0, 3)})${
+      phoneNumber.length > 3 ? " " : ""
+    }${phoneNumber.slice(3)}`;
+  }
+  if (phoneNumber.length >= 9) {
+    phoneNumber = `${phoneNumber.slice(0, 9)}-${phoneNumber.slice(9)}`;
+  }
+
+  // Update the form data
+  formData.phone = phoneNumber;
+};
+
 const validateForm = () => {
   let isValid = true;
   errors.fullName = "";
   errors.email = "";
+  errors.phone = "";
+  errors.businessName = "";
+  errors.industry = "";
+  errors.website = "";
 
   if (!formData.fullName.trim()) {
     errors.fullName = "Full name is required";
@@ -116,6 +194,34 @@ const validateForm = () => {
     isValid = false;
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
     errors.email = "Please enter a valid email address";
+    isValid = false;
+  }
+
+  if (!formData.phone.trim()) {
+    errors.phone = "Phone number is required";
+    isValid = false;
+  } else if (!/^\(\d{3}\) \d{3}-\d{4}$/.test(formData.phone)) {
+    errors.phone = "Please enter a valid phone number: (555) 555-5555";
+    isValid = false;
+  }
+
+  if (!formData.businessName.trim()) {
+    errors.businessName = "Business name is required";
+    isValid = false;
+  }
+
+  if (!formData.industry) {
+    errors.industry = "Industry is required";
+    isValid = false;
+  }
+
+  if (
+    formData.website.trim() &&
+    !/^[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z]{2,}$/.test(
+      formData.website.replace(/^(https?:\/\/)?(www\.)?/, "")
+    )
+  ) {
+    errors.website = "Please enter a valid website domain";
     isValid = false;
   }
 
@@ -143,8 +249,9 @@ const handleSubmit = async () => {
       "Thank you for joining our waitlist! We'll be in touch soon.";
 
     // Reset form
-    formData.fullName = "";
-    formData.email = "";
+    Object.keys(formData).forEach((key) => {
+      formData[key] = "";
+    });
   } catch (error) {
     console.error("Error submitting form:", error);
     submitStatus.type = "error";
@@ -162,7 +269,6 @@ const handleSubmit = async () => {
 }
 
 .text-h2 {
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
   line-height: 1.2;
 }
 
