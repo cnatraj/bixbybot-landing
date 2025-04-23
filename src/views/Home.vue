@@ -1,16 +1,16 @@
 <template>
   <hero-section />
-  <stats-section />
-  <trusted-by-section />
-  <features-section />
   <chatbot-solution-section />
+  <stats-section />
+  <features-section />
+  <trusted-by-section />
   <!-- <testimonials-section /> -->
   <services-section />
   <!-- <pricing-section /> -->
   <faq-section />
   <!-- <integrations-section /> -->
   <cta-section />
-  <contact-section />
+  <!-- <contact-section /> -->
 </template>
 
 <script setup>

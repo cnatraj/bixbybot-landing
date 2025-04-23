@@ -3,13 +3,13 @@
     <v-container>
       <div class="text-center">
         <h2 class="text-h2 font-weight-bold mb-4">
-          Trusted by <span class="highlight">hundreds</span> of home<br>
+          Trusted by <span class="highlight">hundreds</span> of home<br />
           services businesses
         </h2>
         <p class="text-h5 text-secondary mb-12">
           Results-driven lead conversion platform
         </p>
-        
+
         <div class="avatars-row mb-12">
           <v-avatar
             v-for="(avatar, index) in avatars"
@@ -21,31 +21,47 @@
           </v-avatar>
         </div>
       </div>
+
+      <div></div>
+      <v-row>
+        <v-col class="text-center mt-4">
+          <v-btn
+            color="primary"
+            size="x-large"
+            rounded="pill"
+            class="hero-cta mb-4"
+            to="/waitlist"
+          >
+            Start Your free trial now
+            <v-icon end>mdi-arrow-right</v-icon>
+          </v-btn>
+        </v-col>
+      </v-row>
     </v-container>
   </section>
 </template>
 
 <script setup>
 const avatars = [
-  'https://i.pravatar.cc/150?u=M96QKEb',
-  'https://i.pravatar.cc/150?u=kAnBFpO',
-  'https://i.pravatar.cc/150?u=HM7qTnM',
-  'https://i.pravatar.cc/150?u=zXJkpSR',
-  'https://i.pravatar.cc/150?u=ta3cQob',
-  'https://i.pravatar.cc/150?u=2aBAcnK',
-  'https://i.pravatar.cc/150?u=IUMYWbe',
-  'https://i.pravatar.cc/150?u=ieOpb1G',
-  'https://i.pravatar.cc/150?u=I3g2gk7',
-  'https://i.pravatar.cc/150?u=2C7BFXa',
-  'https://i.pravatar.cc/150?u=2mmSB7r',
-  'https://i.pravatar.cc/150?u=81ipGh5'
-]
+  "https://i.pravatar.cc/150?u=M96QKEb",
+  "https://i.pravatar.cc/150?u=kAnBFpO",
+  "https://i.pravatar.cc/150?u=HM7qTnM",
+  "https://i.pravatar.cc/150?u=zXJkpSR",
+  "https://i.pravatar.cc/150?u=ta3cQob",
+  "https://i.pravatar.cc/150?u=2aBAcnK",
+  "https://i.pravatar.cc/150?u=IUMYWbe",
+  "https://i.pravatar.cc/150?u=ieOpb1G",
+  "https://i.pravatar.cc/150?u=I3g2gk7",
+  "https://i.pravatar.cc/150?u=2C7BFXa",
+  "https://i.pravatar.cc/150?u=2mmSB7r",
+  "https://i.pravatar.cc/150?u=81ipGh5",
+];
 </script>
 
 <style scoped lang="scss">
 .trusted-by-section {
   padding: $section-spacing 0;
-  background: #FAF9F6;
+  background: #faf9f6;
 }
 
 .text-h2 {
@@ -60,7 +76,7 @@ const avatars = [
 }
 
 .highlight {
-  color: #FF4D00;
+  color: #ff4d00;
 }
 
 .avatars-row {
@@ -79,6 +95,5 @@ const avatars = [
 }
 
 .book-demo-btn {
-
 }
 </style>

@@ -4,8 +4,8 @@
       <v-row align="center" class="gx-16">
         <v-col cols="12" md="6" class="position-relative">
           <h3 class="text-h3 font-weight-black">
-            BixbyBot is a full context AI chatbot specifically built for the
-            Home Service Industry.
+            Qualify leads, schedule appointments, and boost conversions - hands
+            free.
           </h3>
         </v-col>
         <v-col cols="12" md="6" class="content-col">

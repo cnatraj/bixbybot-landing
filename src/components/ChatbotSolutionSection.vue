@@ -14,9 +14,7 @@
               AI Powered Features
             </v-chip>
           </div>
-          <h2 class="text-h2 font-weight-bold mb-4">
-            Bixbybot delivers more appointments by
-          </h2>
+          <h2 class="text-h2 font-weight-bold mb-4">Meet BixbyBot</h2>
         </v-col>
       </v-row>
 
@@ -49,7 +47,7 @@
           <chat-conversation :conversation="demoConversation" />
         </v-col>
       </v-row>
-      <v-row>
+      <!-- <v-row>
         <v-col class="text-center mt-4">
           <v-btn
             color="primary"
@@ -62,7 +60,7 @@
             <v-icon end>mdi-arrow-right</v-icon>
           </v-btn>
         </v-col>
-      </v-row>
+      </v-row> -->
     </v-container>
   </section>
 </template>
@@ -96,28 +94,28 @@ onUnmounted(() => {
 const features = [
   {
     icon: "mdi-cash-lock",
-    title: "Predictable monthly costs",
-    description: "Fixed monthly pricing - No more paying per lead.",
-  },
-  {
-    icon: "mdi-filter-check",
-    title: "Smart Lead Filtering",
-    description: "Instantly qualify leads to focus on the best prospects.",
-  },
-  {
-    icon: "mdi-clock-outline",
-    title: "24/7 Booking",
-    description: "Customers can schedule appointments anytime.",
+    title: "Value First Approach",
+    description: "Deliver value before asking for contact information.",
   },
   {
     icon: "mdi-message-badge",
-    title: "Automated Follow-Ups",
+    title: "Real, Human-like Conversations",
     description: "Keep prospects engaged and boost conversions.",
   },
   {
+    icon: "mdi-filter-check",
+    title: "Hyper-Qualified Leads",
+    description: "Automatically qualify leads to focus on the best prospects.",
+  },
+  {
     icon: "mdi-star",
-    title: "Post-Service Reviews",
-    description: "Encourage feedback and referrals.",
+    title: "Fast & Seamless Setup",
+    description: "Be up and running in minutes.",
+  },
+  {
+    icon: "mdi-clock-outline",
+    title: "24/7 Bookings",
+    description: "Customers can schedule appointments anytime.",
   },
 ];
 

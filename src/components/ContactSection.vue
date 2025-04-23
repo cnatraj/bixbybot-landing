@@ -1,121 +1,105 @@
 <template>
-  <section class="contact-section">
-    <v-container>
-      <v-row align="center">
-        <v-col class="text-center">
-          <h2 class="text-h2 font-weight-bold mb-4">
-            Join the launch for free!
-          </h2>
+  <div class="contact-form mb-6">
+    <v-form @submit.prevent="handleSubmit">
+      <v-row>
+        <v-col cols="12" md="6">
+          <div>
+            <label class="form-label">Full Name *</label>
+            <v-text-field
+              v-model="formData.fullName"
+              variant="outlined"
+              placeholder="Your full name"
+              :error-messages="errors.fullName"
+              class="form-input"
+            ></v-text-field>
+          </div>
 
-          <p class="text-body-1 text-medium-emphasis mb-4">
-            BixbyBot launches to the public on April 14th. As part of our
-            launch, we are offering BixbyBot for free for the first 50 users.
-          </p>
+          <div>
+            <label class="form-label">Email Address *</label>
+            <v-text-field
+              v-model="formData.email"
+              variant="outlined"
+              placeholder="email@mail.com"
+              :error-messages="errors.email"
+              class="form-input"
+            ></v-text-field>
+          </div>
+
+          <div>
+            <label class="form-label">Phone Number *</label>
+            <v-text-field
+              v-model="formData.phone"
+              variant="outlined"
+              placeholder="(555) 555-5555"
+              :error-messages="errors.phone"
+              class="form-input"
+              @input="formatPhoneNumber"
+              maxlength="14"
+            ></v-text-field>
+          </div>
+        </v-col>
+        <v-col cols="12" md="6">
+          <div>
+            <label class="form-label">Business Name *</label>
+            <v-text-field
+              v-model="formData.businessName"
+              variant="outlined"
+              placeholder="Your business name"
+              :error-messages="errors.businessName"
+              class="form-input"
+            ></v-text-field>
+          </div>
+
+          <div>
+            <label class="form-label">Type of Industry *</label>
+            <v-select
+              v-model="formData.industry"
+              :items="industries"
+              variant="outlined"
+              placeholder="Select your industry"
+              :error-messages="errors.industry"
+              class="form-input"
+            ></v-select>
+          </div>
+
+          <div>
+            <label class="form-label">Business Website</label>
+            <v-text-field
+              v-model="formData.website"
+              variant="outlined"
+              placeholder="www.example.com"
+              :error-messages="errors.website"
+              class="form-input"
+            ></v-text-field>
+          </div>
         </v-col>
       </v-row>
-      <div class="contact-form">
-        <v-form @submit.prevent="handleSubmit">
-          <v-row>
-            <v-col cols="12" md="6">
-              <div>
-                <label class="form-label">Full Name *</label>
-                <v-text-field
-                  v-model="formData.fullName"
-                  variant="outlined"
-                  placeholder="Your full name"
-                  :error-messages="errors.fullName"
-                  class="form-input"
-                ></v-text-field>
-              </div>
+      <v-row>
+        <v-col>
+          <v-btn
+            type="submit"
+            color="black"
+            size="x-large"
+            rounded="pill"
+            class="send-message-btn"
+            :loading="loading"
+            :disabled="loading"
+          >
+            {{ loading ? "Submitting..." : "Reserve my spot" }}
+          </v-btn>
 
-              <div>
-                <label class="form-label">Email Address *</label>
-                <v-text-field
-                  v-model="formData.email"
-                  variant="outlined"
-                  placeholder="email@mail.com"
-                  :error-messages="errors.email"
-                  class="form-input"
-                ></v-text-field>
-              </div>
-
-              <div>
-                <label class="form-label">Phone Number *</label>
-                <v-text-field
-                  v-model="formData.phone"
-                  variant="outlined"
-                  placeholder="(555) 555-5555"
-                  :error-messages="errors.phone"
-                  class="form-input"
-                  @input="formatPhoneNumber"
-                  maxlength="14"
-                ></v-text-field>
-              </div>
-            </v-col>
-            <v-col cols="12" md="6">
-              <div>
-                <label class="form-label">Business Name *</label>
-                <v-text-field
-                  v-model="formData.businessName"
-                  variant="outlined"
-                  placeholder="Your business name"
-                  :error-messages="errors.businessName"
-                  class="form-input"
-                ></v-text-field>
-              </div>
-
-              <div>
-                <label class="form-label">Type of Industry *</label>
-                <v-select
-                  v-model="formData.industry"
-                  :items="industries"
-                  variant="outlined"
-                  placeholder="Select your industry"
-                  :error-messages="errors.industry"
-                  class="form-input"
-                ></v-select>
-              </div>
-
-              <div>
-                <label class="form-label">Business Website</label>
-                <v-text-field
-                  v-model="formData.website"
-                  variant="outlined"
-                  placeholder="www.example.com"
-                  :error-messages="errors.website"
-                  class="form-input"
-                ></v-text-field>
-              </div>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col>
-              <v-btn
-                type="submit"
-                color="black"
-                size="x-large"
-                rounded="pill"
-                class="send-message-btn"
-                :loading="loading"
-                :disabled="loading"
-              >
-                {{ loading ? "Submitting..." : "Reserve my spot" }}
-              </v-btn>
-
-              <v-alert
-                v-if="submitStatus.message"
-                :type="submitStatus.type"
-                class="mt-4"
-                variant="tonal"
-              >
-                {{ submitStatus.message }}
-              </v-alert>
-            </v-col>
-          </v-row>
-        </v-form>
-      </div>
-    </v-container>
-  </section>
+          <v-alert
+            v-if="submitStatus.message"
+            :type="submitStatus.type"
+            class="mt-4"
+            variant="tonal"
+          >
+            {{ submitStatus.message }}
+          </v-alert>
+        </v-col>
+      </v-row>
+    </v-form>
+  </div>
 </template>
 
 <script setup>
