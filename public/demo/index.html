@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elite Roofing Solutions | Professional Roofing Services</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #2563eb;
+        --secondary: #1e40af;
+        --text: #1f2937;
+        --light: #f3f4f6;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        line-height: 1.5;
+        color: var(--text);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      .header {
+        background: white;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 100;
+      }
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 80px;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text);
+        font-weight: 500;
+      }
+
+      .hero {
+        background-image: url("https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg");
+        background-size: cover;
+        background-position: center;
+        height: 600px;
+        margin-top: 80px;
+        display: flex;
+        align-items: center;
+        position: relative;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      .hero-content {
+        position: relative;
+        color: white;
+        max-width: 600px;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero p {
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: var(--primary);
+        color: white;
+        text-decoration: none;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        transition: background 0.3s ease;
+      }
+
+      .btn:hover {
+        background: var(--secondary);
+      }
+
+      .services {
+        padding: 6rem 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .section-title h2 {
+        font-size: 2.5rem;
+        color: var(--text);
+        margin-bottom: 1rem;
+      }
+
+      .section-title p {
+        color: #6b7280;
+        font-size: 1.25rem;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .service-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .service-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .service-card p {
+        color: #6b7280;
+      }
+
+      .contact {
+        padding: 6rem 0;
+        background: var(--light);
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4rem;
+      }
+
+      .contact-info h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .contact-info p {
+        color: #6b7280;
+        margin-bottom: 2rem;
+      }
+
+      .contact-details {
+        margin-bottom: 2rem;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        color: var(--text);
+      }
+
+      .contact-form {
+        background: white;
+        padding: 2rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #e5e7eb;
+        border-radius: 0.375rem;
+        font-family: inherit;
+      }
+
+      .form-group textarea {
+        height: 150px;
+        resize: vertical;
+      }
+
+      .cta {
+        background: var(--light);
+        padding: 6rem 0;
+        text-align: center;
+      }
+
+      .cta h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .cta p {
+        font-size: 1.25rem;
+        color: #6b7280;
+        margin-bottom: 2rem;
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .section-title h2 {
+          font-size: 2rem;
+        }
+
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav container">
+        <div class="logo">Elite Roofing</div>
+        <div class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+          <a href="#" class="btn">Get a Quote</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Quality Roofing Solutions for Your Home</h1>
+          <p>
+            Professional roofing services with over 20 years of experience. We
+            provide top-quality materials and exceptional workmanship.
+          </p>
+          <a href="#" class="btn">Free Consultation</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="services">
+      <div class="container">
+        <div class="section-title">
+          <h2>Our Services</h2>
+          <p>
+            Comprehensive roofing solutions for residential and commercial
+            properties
+          </p>
+        </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <h3>Roof Installation</h3>
+            <p>
+              Expert installation of new roofs using high-quality materials and
+              proven techniques.
+            </p>
+          </div>
+          <div class="service-card">
+            <h3>Roof Repair</h3>
+            <p>
+              Quick and reliable repairs for all types of roof damage and leaks.
+            </p>
+          </div>
+          <div class="service-card">
+            <h3>Maintenance</h3>
+            <p>
+              Regular maintenance to extend your roof's lifespan and prevent
+              costly repairs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Contact Us</h2>
+          <p>Get in touch for a free consultation and estimate</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3>Let's discuss your project</h3>
+            <p>
+              Fill out the form and our team will get back to you within 24
+              hours.
+            </p>
+            <div class="contact-details">
+              <div class="contact-item">
+                <p>📞 (555) 123-4567</p>
+              </div>
+              <div class="contact-item">
+                <p>📧 info@eliteroofing.com</p>
+              </div>
+              <div class="contact-item">
+                <p>📍 123 Roofing Street, City, State 12345</p>
+              </div>
+            </div>
+          </div>
+          <div class="contact-form">
+            <form>
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" required />
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" required></textarea>
+              </div>
+              <button type="submit" class="btn">Request a call</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <h2>Ready to Start Your Roofing Project?</h2>
+        <p>Contact us today for a free consultation and estimate</p>
+        <a href="#" class="btn">Get Started</a>
+      </div>
+    </section>
+
+    <!-- Bixby Chatbot Widget -->
+    <script
+      type="module"
+      src="https://chat.bixbybot.com/bixby-widget.iife.js"
+      data-bot-id="f0f79401-cbe7-4aa6-a950-6d4a94c31f84"
+    ></script>
+    <!-- Bixby Chatbot Widget -->
+  </body>
+</html>
